@@ -17,3 +17,20 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: validate
+
+auth:
+  token:
+    jwt:
+      issuer: catsriding.com
+      secret-key: catsridingSecretKey
+      expiresAccessToken: 300_000
+      expiresRefreshToken: 604_800_000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace

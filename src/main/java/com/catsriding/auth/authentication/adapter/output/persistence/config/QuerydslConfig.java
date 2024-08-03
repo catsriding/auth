@@ -1,4 +1,4 @@
-package com.catsriding.auth.common.adapter.output.persistence;
+package com.catsriding.auth.authentication.adapter.output.persistence.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
