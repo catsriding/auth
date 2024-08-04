@@ -43,7 +43,7 @@ public class UserEntity {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public User toModel() {
+    public User toDomain() {
         return User.builder()
                 .userId(UserId.withId(id))
                 .username(username)

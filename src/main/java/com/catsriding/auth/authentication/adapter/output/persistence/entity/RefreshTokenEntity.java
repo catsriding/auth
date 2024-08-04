@@ -2,7 +2,6 @@ package com.catsriding.auth.authentication.adapter.output.persistence.entity;
 
 import com.catsriding.auth.authentication.domain.entity.RefreshToken;
 import com.catsriding.auth.authentication.domain.vo.RefreshTokenId;
-import com.catsriding.auth.authentication.domain.vo.UserId;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -46,10 +45,10 @@ public class RefreshTokenEntity {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public static RefreshTokenEntity from(RefreshToken domain, UserEntity userEntity) {
+    public static RefreshTokenEntity from(RefreshToken domain, UserEntity user) {
         RefreshTokenEntity entity = new RefreshTokenEntity();
         entity.id = domain.getRefreshTokenId().getId();
-        entity.user = userEntity;
+        entity.user = user;
         entity.token = domain.getToken();
         entity.deviceId = domain.getDeviceId();
         entity.expiresAt = domain.getExpiresAt();
@@ -60,7 +59,7 @@ public class RefreshTokenEntity {
     public RefreshToken toDomain() {
         return RefreshToken.builder()
                 .refreshTokenId(RefreshTokenId.withId(id))
-                .userId(UserId.withId(user.getId()))
+                .user(user.toDomain())
                 .token(token)
                 .deviceId(deviceId)
                 .expiresAt(expiresAt)

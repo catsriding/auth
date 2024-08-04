@@ -31,7 +31,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                         .requestMatchers(
-                                "/login"
+                                "/login",
+                                "/renew"
                         )
                         .permitAll()
                         .anyRequest()
